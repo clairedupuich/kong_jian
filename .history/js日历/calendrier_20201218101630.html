@@ -1,0 +1,261 @@
+<!-- 
+
+    <!doctype html>
+    <html>
+
+     <head>
+      <meta charset="utf-8">
+      <title>calendrier</title>
+      <link rel="stylesheet" href="calendrier.css">
+      <script src="js/jquery-1.11.3.min.js"></script>
+      <script>
+       
+      </script>
+     </head>
+
+     <body>
+      <div id="calendar">
+       <h4>2013年10月</h4>
+       <a href="##" rel="external nofollow" rel="external nofollow" class="a1">上月</a>
+       <a href="##" rel="external nofollow" rel="external nofollow" class="a2">下月</a>
+       <ul class="week">
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+
+       </ul>
+       <ul class="dateList"></ul>
+      </div>
+
+     <script src="calendrier.js"></script>
+     </body>
+
+    </html> -->
+
+  <!--   <!doctype html>
+    <html>
+     
+     <head>
+     <meta charset="utf-8">
+     <title>无标题文档</title>
+     <style>
+      * {margin: 0;padding: 0}
+      #calendar {width: 210px;margin: 100px auto;overflow: hidden;border: 1px solid #000;padding: 20px;position: relative}
+      #calendar h4 {text-align: center;margin-bottom: 10px}
+      #calendar .a1 {position: absolute;top: 20px;left: 20px;}
+      #calendar .a2 {position: absolute;top: 20px;right: 20px;}
+      #calendar .week {height: 30px;line-height: 20px;border-bottom: 1px solid #000;margin-bottom: 10px}
+      #calendar .week li {float: left;width: 30px;height: 30px;text-align: center;list-style: none;}
+      #calendar .dateList {overflow: hidden;clear: both}
+      #calendar .dateList li {float: left;width: 30px;height: 30px;text-align: center;line-height: 30px;list-style: none;}
+      #calendar .dateList .ccc {color: #ccc;}
+      #calendar .dateList .red {background: #F90;color: #fff;}
+      #calendar .dateList .sun {color: #f00;}
+     </style>
+     <script src="js/jquery-1.11.3.min.js"></script>
+     <script>
+      $(function() {
+     
+      //必要的数据
+      //今天的年 月 日 ；本月的总天数；本月第一天是周几？？？
+      var iNow=0;
+       
+      function run(n) {
+     
+       var oDate = new Date(); //定义时间
+       oDate.setMonth(oDate.getMonth()+n);//设置月份
+       var year = oDate.getFullYear(); //年
+       var month = oDate.getMonth(); //月
+       var today = oDate.getDate(); //日
+     
+       //计算本月有多少天
+       var allDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+     
+       //判断闰年
+       if(month == 1) {
+       if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        allDay = 29;
+       }
+       }
+     
+       //判断本月第一天是星期几
+       oDate.setDate(1); //时间调整到本月第一天
+       var week = oDate.getDay(); //读取本月第一天是星期几
+     
+       //console.log(week);
+       $(".dateList").empty();//每次清空
+       //插入空白
+     
+       for(var i = 0; i < week; i++) {
+       $(".dateList").append("<li></li>");
+       }
+     
+       //日期插入到dateList
+       for(var i = 1; i <= allDay; i++) {
+       $(".dateList").append("<li>" + i + "</li>")
+       }
+       //标记颜色=====================
+       $(".dateList li").each(function(i, elm){
+       //console.log(index,elm);
+       var val = $(this).text();
+       //console.log(val);
+       if (n==0) {
+        if(val<today){
+        $(this).addClass('ccc')
+       }else if(val==today){
+        $(this).addClass('red')
+       }else if(i%7==0 || i%7==6 ){
+        $(this).addClass('sun')
+       }
+       }else if(n<0){
+        $(this).addClass('ccc')
+       }else if(i%7==0 || i%7==6 ){
+        $(this).addClass('sun')
+       }
+       });
+     
+       //定义标题日期
+       $("#calendar h4").text(year + "年" + (month + 1) + "月");
+      };
+      run(0);
+       
+      $(".a1").click(function(){
+       iNow--;
+       run(iNow);
+      });
+       
+      $(".a2").click(function(){
+       iNow++;
+       run(iNow);
+      })
+      });
+     </script>
+     </head>
+     
+     <body>
+     <div id="calendar">
+      <h4>2013年10月</h4>
+      <a href="##" rel="external nofollow" rel="external nofollow" class="a1">上月</a>
+      <a href="##" rel="external nofollow" rel="external nofollow" class="a2">下月</a>
+      <ul class="week">
+      <li>日</li>
+      <li>一</li>
+      <li>二</li>
+      <li>三</li>
+      <li>四</li>
+      <li>五</li>
+      <li>六</li>
+     
+      </ul>
+      <ul class="dateList"></ul>
+     </div>
+     
+     </body>
+     
+    </html> -->
+
+    <!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="UTF-8">
+ <title></title>
+ <!--CSS样式-->
+ <style type="text/css">
+ *{margin: 0px;padding: 0px;}
+ #div{width: 400px;height: 300px;border: 1px solid red;margin: auto;}
+ #div div:nth-child(1){display: flex;align-items: center;justify-content: center;}
+ #tbcal{border-collapse: collapse;width: 100%;text-align: center;}
+ #tbcal tr td{border: 1px solid red;}
+ </style>
+ <script type="text/javascript">
+// 加载完HTML内容后,JavaScript开始执行
+ window.onload=function(){
+ initial();
+ document.getElementById("selyear").onchange=show;
+ document.getElementById("selmonth").onchange=show;
+ show();
+ }
+// 显示日历
+ function show(){
+// 获取鼠标点击所选择的年月值
+ var year=parseInt(document.getElementById("selyear").value);
+ var month=parseInt(document.getElementById("selmonth").value);
+// 判断是否为闰年,以便确定2月的天数
+ var flag=year%4==0&&year%100!=0||year%400==0;
+ var dayofmonth=[31,flag?29:28,31,30,31,30,31,31,30,31,30,31];
+// 给date赋值,值为所选择的某年某月一号
+ var dt=new Date();
+ dt.setFullYear(year);
+ dt.setMonth(month-1);
+ dt.setDate(1);
+// 获取date对应周几
+ var week=dt.getDay();
+// 当月应该打印多少行
+ var rows=Math.ceil((dayofmonth[dt.getMonth()]+week)/7);
+ var k=0;
+// 如果表格中有除表头外的数据,进行数据删除,避免上次月份的数据对下次有影响
+ var table=document.getElementById("tbcal");
+ while(table.rows.length>1){
+  table.deleteRow(1);
+   
+ }
+// 循环向表格中添加数据，生成日历
+ for(var i=0;i<rows;i++){
+  var row=table.insertRow(i+1);
+  for(var j=0;j<7;j++){
+  var cell=row.insertCell(j);
+  k++;
+  if(k<=week || k>dayofmonth[dt.getMonth()]+week){
+  cell.innerHTML="";
+  }
+  else{
+  cell.innerHTML=k-week;
+  }
+  }
+ }
+ }
+// 通过option对象向年月中循环赋值
+ function initial(){
+ var years=document.getElementById("selyear");
+ var months=document.getElementById("selmonth");
+ for (var i=1990;i<2019;i++) {
+  var option=document.createElement("option");
+  option.text=i;
+  years.add(option);
+ }
+ for (var i=1;i<13;i++) {
+  var option=document.createElement("option");
+  option.text=i;
+  months.add(option);
+ }
+ }
+ </script>
+ </head>
+ <body>
+ <div id="div">
+ <!--定义年月菜单-->
+ <div>
+ <select id="selyear"></select>&nbsp;Anne&nbsp;
+ <select id="selmonth"></select>&nbsp;Mois&nbsp;
+ </div>
+ <div>
+ <!--定义列表-->
+ <table id="tbcal">
+  <tr>
+  <td>dimanch</td>
+  <td>lundi</td>
+  <td>周二</td>
+  <td>周三</td>
+  <td>周四</td>
+  <td>周五</td>
+  <td>周六</td>
+  </tr>
+ </table>
+ </div>
+ </div>
+ </body>
+</html>

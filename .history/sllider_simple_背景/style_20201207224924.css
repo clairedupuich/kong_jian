@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+#view {
+    position: relative;
+    width: 320px;
+    height: 120px;
+    margin-left: 320px;
+    
+    overflow: hidden;
+}
+
+#view:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+#img_list {
+    position: absolute;
+    width: 960px;
+}
+
+#img_list li {
+    float: left;
+    width: 320px;
+    height: 120px;
+}
+
+#a {
+    background-image: url();
+}
+
+#b {
+    
+}
+
+#c {
+    
+}
+#d 

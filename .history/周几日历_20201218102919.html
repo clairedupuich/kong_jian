@@ -1,0 +1,103 @@
+<!-- 
+
+    <!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="UTF-8">
+ <title></title>
+ <!--CSS样式-->
+ <style type="text/css">
+    *{margin: 0px;padding: 0px;}
+    #div{width: 400px;height: 300px;border: 1px solid red;margin: auto;}
+    #div div:nth-child(1){display: flex;align-items: center;justify-content: center;}
+    #tbcal{border-collapse: collapse;width: 100%;text-align: center;}
+    #tbcal tr td{border: 1px solid red;}
+    </style>
+    <script type="text/javascript">
+   // 加载完HTML内容后,JavaScript开始执行
+    window.onload=function(){
+    initial();
+    document.getElementById("selyear").onchange=show;
+    document.getElementById("selmonth").onchange=show;
+    show();
+    }
+   // 显示日历
+    function show(){
+   // 获取鼠标点击所选择的年月值
+    var year=parseInt(document.getElementById("selyear").value);
+    var month=parseInt(document.getElementById("selmonth").value);
+   // 判断是否为闰年,以便确定2月的天数
+    var flag=year%4==0&&year%100!=0||year%400==0;
+    var dayofmonth=[31,flag?29:28,31,30,31,30,31,31,30,31,30,31];
+   // 给date赋值,值为所选择的某年某月一号
+    var dt=new Date();
+    dt.setFullYear(year);
+    dt.setMonth(month-1);
+    dt.setDate(1);
+   // 获取date对应周几
+    var week=dt.getDay();
+   // 当月应该打印多少行
+    var rows=Math.ceil((dayofmonth[dt.getMonth()]+week)/7);
+    var k=0;
+   // 如果表格中有除表头外的数据,进行数据删除,避免上次月份的数据对下次有影响
+    var table=document.getElementById("tbcal");
+    while(table.rows.length>1){
+     table.deleteRow(1);
+      
+    }
+   // 循环向表格中添加数据，生成日历
+    for(var i=0;i<rows;i++){
+     var row=table.insertRow(i+1);
+     for(var j=0;j<7;j++){
+     var cell=row.insertCell(j);
+     k++;
+     if(k<=week || k>dayofmonth[dt.getMonth()]+week){
+     cell.innerHTML="";
+     }
+     else{
+     cell.innerHTML=k-week;
+     }
+     }
+    }
+    }
+   // 通过option对象向年月中循环赋值
+    function initial(){
+    var years=document.getElementById("selyear");
+    var months=document.getElementById("selmonth");
+    for (var i=2019;i<2022;i++) {
+     var option=document.createElement("option");
+     option.text=i;
+     years.add(option);
+    }
+    for (var i=1;i<18;i++) {
+     var option=document.createElement("option");
+     option.text=i;
+     months.add(option);
+    }
+    }
+    </script>
+    </head>
+    <body>
+    <div id="div">
+    <!--定义年月菜单-->
+    <div>
+    <select id="selyear"></select>&nbsp;Anne&nbsp;
+    <select id="selmonth"></select>&nbsp;Mois&nbsp;
+    </div>
+    <div>
+    <!--定义列表-->
+    <table id="tbcal">
+     <tr>
+     <td>dimanch</td>
+     <td>lundi</td>
+     <td>mardi</td>
+     <td>mercredi</td>
+     <td>jeudi</td>
+     <td>vendredi</td>
+     <td>samdi</td>
+     </tr>
+    </table>
+    </div>
+    </div>
+    </body>
+   </html> -->

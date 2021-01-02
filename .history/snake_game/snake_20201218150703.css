@@ -1,0 +1,66 @@
+.face{
+    height: 400px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background-color: pink;
+}
+#playground{
+    height: 400px;
+    width: 450px;
+    float: left;
+    position: relative;
+}
+.menu{
+    padding: ;
+    height: 400px;
+    width: 250px;
+    float: left;
+    background-color: skyblue;
+}
+#snack{
+    height: 40px;
+    width: 40px;
+   /*  background-color: red; */
+    background-image: url(img/game_snake.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 30%;
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
+#food{
+    height: 40px;
+    width: 40px;
+   /*  background: blue; */
+   background-image: url(img/téléchargement.jpeg);
+   border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+.body{
+    height: 20px;
+    width: 20px;
+    background: green;
+    border-radius: .3em;
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
+#score{
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+.menu div{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+作者：IT程序狮
+链接：https://juejin.cn/post/6844903459297181703
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

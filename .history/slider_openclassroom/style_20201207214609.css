@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#carrousel{
+    position:relative;
+    height:200px;
+    width:100%;
+    margin:auto;
+}
+#carrousel ul li{
+    position:absolute;
+    top:0;
+    left:0;
+}
+img {
+    height:
+}
